@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import dotenv from 'dotenv';
 
 const FootballApiComponent = () => {
   const [data, setData] = useState(null);
-  /* const apiKey = process.env.API_KEY; */
+  
+  const apiUrl = "https://v3.football.api-sports.io/leagues";
   const apiKey = "96c92979f6fc1d1a9c52ddf84aabbdbd";
-  /* const endpoint = process.env.API_FOOTBALL_ENDPOINT; */
-  const endpoint = "https://v3.football.api-sports.io/";
+  const apiHost = "football-results-of-today.p.rapidapi.com";
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(endpoint, {
+        const response = await fetch(apiUrl, {
           headers: {
             'x-apisports-key': apiKey,
+            'x-rapidapi-host': apiHost,
+
           },
         });
 
