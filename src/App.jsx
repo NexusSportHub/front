@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 import UserDataTable from './UserDataTable';
-import FakeStoreApiComponent from './FakeStoreApiComponent';
+/* import FakeStoreApiComponent from './FakeStoreApiComponent'; */
+import FootballApiComponent from './FootballApiComponent';
+import dotenv from 'dotenv';
 
 function App() {
   const [decodedUserData, setDecodedUserData] = useState(null);
@@ -46,7 +48,8 @@ function App() {
         </div>
       ) : null}
 
-      {isLoggedIn && <FakeStoreApiComponent />}
+      {/* {isLoggedIn && <FakeStoreApiComponent />} */}
+      {isLoggedIn && <FootballApiComponent />}
     </>
   );
 }
