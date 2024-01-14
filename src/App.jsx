@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 import UserDataTable from './UserDataTable';
-/* import FakeStoreApiComponent from './FakeStoreApiComponent'; */
 import FootballApiComponent from './FootballApiComponent';
-import dotenv from 'dotenv';
 
 function App() {
   const [decodedUserData, setDecodedUserData] = useState(null);
@@ -33,7 +31,7 @@ function App() {
   return (
     <>
       <GoogleLogin
-        clientId="68034086851-tualkane6lp1218ekebuhtf2mrrht534.apps.googleusercontent.com"
+        clientId={import.meta.env.VITE_CLIENT_ID}
         onSuccess={handleLoginSuccess}
         onError={() => {
           console.log('Login Failed');
@@ -47,8 +45,6 @@ function App() {
           <button onClick={handleLogoutClick}>Logout</button>
         </div>
       ) : null}
-
-      {/* {isLoggedIn && <FakeStoreApiComponent />} */}
       {isLoggedIn && <FootballApiComponent />}
     </>
   );

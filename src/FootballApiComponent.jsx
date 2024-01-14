@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import dotenv from 'dotenv';
+import { useState, useEffect } from 'react';
 
 const FootballApiComponent = () => {
   const [data, setData] = useState(null);
   
-  const apiUrl = "https://v3.football.api-sports.io/leagues";
-  const apiKey = "96c92979f6fc1d1a9c52ddf84aabbdbd";
-  const apiHost = "football-results-of-today.p.rapidapi.com";
-
+  
+  const apiUrl = import.meta.env.VITE_API_ENDPOINT;
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const apiHost = import.meta.env.VITE_API_HOST;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +31,7 @@ const FootballApiComponent = () => {
     };
 
     fetchData();
-  }, []);
+  }, [apiUrl, apiKey, apiHost]);
 
   return (
     <div>
