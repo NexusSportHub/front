@@ -1,6 +1,10 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
 const UserDataTable = ({ userData }) => {
+  if (!userData) {
+    return null;
+  }
+
   return (
     <table>
       <thead>
@@ -19,6 +23,14 @@ const UserDataTable = ({ userData }) => {
       </tbody>
     </table>
   );
+};
+
+UserDataTable.propTypes = {
+  userData: PropTypes.shape({
+    sub: PropTypes.string,
+    name: PropTypes.string,
+    email: PropTypes.string,
+  }),
 };
 
 export default UserDataTable;
