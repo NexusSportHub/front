@@ -1,8 +1,11 @@
+// App.jsx
 import { useState } from 'react';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
-import UserDataTable from './UserDataTable';
-import FootballApiComponent from './FootballApiComponent';
+import UserDataTable from './components/UserDataTable';
+import SportsButton from './components/SportsButton';
+import StyledTableCell from './components/StyledTableCell';
+import Dashboard from './components/Dashboard';
 
 function App() {
   const [decodedUserData, setDecodedUserData] = useState(null);
@@ -15,16 +18,16 @@ function App() {
       name: decodedJwt.name,
       email: decodedJwt.email,
     });
-    // Actualiza el estado para indicar que el usuario ha iniciado sesión
+    // Update the state to indicate that the user has logged in
     setIsLoggedIn(true);
   };
 
   const handleLogoutClick = () => {
-    // Llama a la función de logout de Google
+    // Call the Google logout function
     googleLogout();
-    // Limpia los datos de usuario después del logout
+    // Clear user data after logout
     setDecodedUserData(null);
-    // Actualiza el estado para indicar que el usuario ha cerrado sesión
+    // Update the state to indicate that the user has logged out
     setIsLoggedIn(false);
   };
 
@@ -45,7 +48,10 @@ function App() {
           <button onClick={handleLogoutClick}>Logout</button>
         </div>
       ) : null}
-      {isLoggedIn && <FootballApiComponent />}
+
+      {isLoggedIn && <Dashboard />}
+      {isLoggedIn && <StyledTableCell />}
+      {isLoggedIn && <SportsButton /> }
     </>
   );
 }
