@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react';
 
 const FootballApiComponent = () => {
   const [data, setData] = useState(null);
-  
-  
+
   const apiUrl = import.meta.env.VITE_API_ENDPOINT;
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiHost = import.meta.env.VITE_API_HOST;
@@ -15,7 +14,6 @@ const FootballApiComponent = () => {
           headers: {
             'x-apisports-key': apiKey,
             'x-rapidapi-host': apiHost,
-
           },
         });
 
@@ -31,7 +29,7 @@ const FootballApiComponent = () => {
     };
 
     fetchData();
-  }, [apiUrl, apiKey, apiHost]);
+  }, [apiHost, apiKey, apiUrl]);
 
   return (
     <div>
