@@ -12,6 +12,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLoginSuccess = (credentialResponse) => {
+    sessionStorage.setItem('undecodedJWT', JSON.stringify(credentialResponse.credential));
     const decodedJwt = jwtDecode(credentialResponse.credential);
     setDecodedUserData({
       sub: decodedJwt.sub,
