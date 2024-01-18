@@ -4,18 +4,13 @@ import axios from 'axios';
 const apiKey = import.meta.env.VITE_API_KEY;
 const apiHost = import.meta.env.VITE_API_HOST;
 const sports = import.meta.env.VITE_SPORT.split(',');
+const webclientPort = import.meta.env.VITE_WEBCLIENT_PORT;
 
 const SportsButton = () => {
   const [data, setData] = useState(null);
 
   const handleClick = async (sport) => {
-    let apiUrl;
-
-    if (sport === 'football') {
-      apiUrl = `https://v3.football.api-sports.io/leagues`;
-    } else {
-      apiUrl = `https://v1.${sport}.api-sports.io/leagues`;
-    }
+    let apiUrl =`http://localhost:${webclientPort}/api/${sport}/leagues`;
     
     try {
       const response = await axios.get(apiUrl, {

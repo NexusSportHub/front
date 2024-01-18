@@ -19,6 +19,7 @@ function App() {
       name: decodedJwt.name,
       email: decodedJwt.email,
     });
+    sessionStorage.setItem('userName', decodedJwt.name);
     // Update the state to indicate that the user has logged in
     setIsLoggedIn(true);
   };
