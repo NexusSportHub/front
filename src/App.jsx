@@ -6,6 +6,9 @@ import UserDataTable from './components/UserDataTable';
 import SportsButton from './components/SportsButton';
 import StyledTableCell from './components/StyledTableCell';
 import Dashboard from './components/Dashboard';
+import Metodos from './components/Metodos';
+import Periodos from './components/Periodos';
+import Suscripcion from './components/Suscribcion';
 
 function App() {
   const [decodedUserData, setDecodedUserData] = useState(null);
@@ -53,7 +56,11 @@ function App() {
 
       {isLoggedIn && <Dashboard />}
       {isLoggedIn && <StyledTableCell />}
-      {isLoggedIn && <SportsButton /> }
+      {isLoggedIn && <SportsButton />}
+      {isLoggedIn && <Metodos />}
+      {isLoggedIn && <Periodos />}
+      {isLoggedIn && <Suscripcion />}
+
     </>
   );
 }
