@@ -35,7 +35,7 @@ export const mainListItems = (
       <ListItemIcon>
         <SportsBaseballIcon />
       </ListItemIcon>
-      <ListItemText primary="Baseball"/>
+      <ListItemText primary="Basketball"/>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>

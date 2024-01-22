@@ -17,10 +17,11 @@ import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
+import { mainListItems, secondaryListItems } from './ListItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import ImageAvatars from './Avatar';
 
 function Copyright(props) {
   return (
@@ -30,7 +31,6 @@ function Copyright(props) {
         Nexus Sport Hub
       </Link>{' '}
       {new Date().getFullYear()}
-      {'.'}
     </Typography>
   );
 }
@@ -85,6 +85,8 @@ const defaultTheme = createTheme();
 
 export default function Dashboard() {
   const [open, setOpen] = React.useState(true);
+  const userName = sessionStorage?.getItem("userName");
+  const userMail = "(" +sessionStorage?.getItem("userMail")+")";
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -111,6 +113,7 @@ export default function Dashboard() {
             >
               <MenuIcon />
             </IconButton>
+            <ImageAvatars />
             <Typography
               component="h1"
               variant="h6"
@@ -118,7 +121,7 @@ export default function Dashboard() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Bienvenido, Jouse Márquez
+              Bienvenido/a, {userName} {userMail}
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
