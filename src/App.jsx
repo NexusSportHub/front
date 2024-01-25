@@ -2,9 +2,7 @@
 import { useState } from 'react';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
-import UserDataTable from './components/UserDataTable';
 import SportsButton from './components/SportsButton';
-import StyledTableCell from './components/StyledTableCell';
 import Dashboard from './components/Dashboard';
 
 function App() {
@@ -14,12 +12,17 @@ function App() {
   const handleLoginSuccess = (credentialResponse) => {
     sessionStorage.setItem('undecodedJWT', JSON.stringify(credentialResponse.credential));
     const decodedJwt = jwtDecode(credentialResponse.credential);
+    console.log(decodedJwt);
     setDecodedUserData({
       sub: decodedJwt.sub,
       name: decodedJwt.name,
       email: decodedJwt.email,
+      picture: decodedJwt.picture,
     });
     sessionStorage.setItem('userName', decodedJwt.name);
+    sessionStorage.setItem('userMail', decodedJwt.email);
+    sessionStorage.setItem('userPicture', decodedJwt.picture);
+    
     // Update the state to indicate that the user has logged in
     setIsLoggedIn(true);
   };
@@ -31,10 +34,13 @@ function App() {
     setDecodedUserData(null);
     // Update the state to indicate that the user has logged out
     setIsLoggedIn(false);
+    // SessionStorage clear
+    sessionStorage.clear();
   };
 
   return (
     <>
+
       <GoogleLogin
         clientId={import.meta.env.VITE_CLIENT_ID}
         onSuccess={handleLoginSuccess}
@@ -46,13 +52,11 @@ function App() {
 
       {decodedUserData ? (
         <div>
-          <UserDataTable userData={decodedUserData} />
           <button onClick={handleLogoutClick}>Logout</button>
         </div>
       ) : null}
 
       {isLoggedIn && <Dashboard />}
-      {isLoggedIn && <StyledTableCell />}
       {isLoggedIn && <SportsButton /> }
     </>
   );

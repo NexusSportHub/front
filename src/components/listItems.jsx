@@ -4,10 +4,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import PeopleIcon from '@mui/icons-material/People';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import LayersIcon from '@mui/icons-material/Layers';
+import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
+import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
+import SportsBaseballIcon from '@mui/icons-material/SportsBaseball';
+import SportsRugbyIcon from '@mui/icons-material/SportsRugby';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 
 export const mainListItems = (
@@ -20,27 +21,33 @@ export const mainListItems = (
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <SportsSoccerIcon />
       </ListItemIcon>
-      <ListItemText primary="Orders" />
+      <ListItemText primary="Football" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <PeopleIcon />
+        <SportsBasketballIcon />
       </ListItemIcon>
-      <ListItemText primary="Customers" />
+      <ListItemText primary="Basketball" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <BarChartIcon />
+        <SportsBaseballIcon />
       </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText primary="Basketball"/>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
-        <LayersIcon />
+        <SportsRugbyIcon />
       </ListItemIcon>
-      <ListItemText primary="Integrations" />
+      <ListItemText primary="Rugby" />
+    </ListItemButton>
+    <ListItemButton >
+      <ListItemIcon>
+        <MoreHorizIcon />
+      </ListItemIcon>
+      <ListItemText secondary="More Sports Soon" disable/>
     </ListItemButton>
   </React.Fragment>
 );
