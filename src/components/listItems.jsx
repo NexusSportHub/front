@@ -4,15 +4,31 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 import SportsSoccerIcon from '@mui/icons-material/SportsSoccer';
 import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 import SportsBaseballIcon from '@mui/icons-material/SportsBaseball';
 import SportsRugbyIcon from '@mui/icons-material/SportsRugby';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import AssignmentIcon from '@mui/icons-material/Assignment';
+
+export const dashboard = (
+  <React.Fragment>
+    <ListSubheader component="div" inset>
+      Dashboard
+    </ListSubheader>
+    <ListItemButton>
+      <ListItemIcon>
+        <DashboardIcon />
+      </ListItemIcon>
+      <ListItemText primary="Dashboard" />
+    </ListItemButton>
+  </React.Fragment>
+);
 
 export const mainListItems = (
   <React.Fragment>
+    <ListSubheader component="div" inset>
+      APIs
+    </ListSubheader>
     <ListItemButton>
       <ListItemIcon>
         <DashboardIcon />
@@ -35,19 +51,13 @@ export const mainListItems = (
       <ListItemIcon>
         <SportsBaseballIcon />
       </ListItemIcon>
-      <ListItemText primary="Basketball"/>
+      <ListItemText primary="Baseball" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
         <SportsRugbyIcon />
       </ListItemIcon>
       <ListItemText primary="Rugby" />
-    </ListItemButton>
-    <ListItemButton >
-      <ListItemIcon>
-        <MoreHorizIcon />
-      </ListItemIcon>
-      <ListItemText secondary="More Sports Soon" disable/>
     </ListItemButton>
   </React.Fragment>
 );

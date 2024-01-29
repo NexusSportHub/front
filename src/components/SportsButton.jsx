@@ -5,6 +5,7 @@ const apiKey = import.meta.env.VITE_API_KEY;
 const apiHost = import.meta.env.VITE_API_HOST;
 const sports = import.meta.env.VITE_SPORT.split(',');
 const webclientPort = import.meta.env.VITE_WEBCLIENT_PORT;
+const apiBearerToken = sessionStorage.getItem('undecodedJWT');
 
 const SportsButton = () => {
   const [data, setData] = useState(null);
@@ -17,6 +18,7 @@ const SportsButton = () => {
         headers: {
           'x-apisports-key': apiKey,
           'x-rapidapi-host': apiHost,
+          'Authorization': 'Bearer ' + apiBearerToken,
         },
       });
       setData(response.data);
