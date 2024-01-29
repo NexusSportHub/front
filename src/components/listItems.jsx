@@ -10,11 +10,8 @@ import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
 import SportsBaseballIcon from '@mui/icons-material/SportsBaseball';
 import SportsRugbyIcon from '@mui/icons-material/SportsRugby';
 
-export const dashboard = (
+export const dashboarListItems = (
   <React.Fragment>
-    <ListSubheader component="div" inset>
-      Dashboard
-    </ListSubheader>
     <ListItemButton>
       <ListItemIcon>
         <DashboardIcon />
@@ -29,12 +26,6 @@ export const mainListItems = (
     <ListSubheader component="div" inset>
       APIs
     </ListSubheader>
-    <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
         <SportsSoccerIcon />
