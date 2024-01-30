@@ -113,21 +113,21 @@ export default function Dashboard() {
             >
               <MenuIcon />
             </IconButton>
-            <ImageAvatars />
             <Typography
-              component="h1"
+              component="h2"
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 1, padding: 1 }}
             >
-              Bienvenido/a, {userName} {userMail}
+              Welcome, {userName} {userMail}
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+            <ImageAvatars/>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>

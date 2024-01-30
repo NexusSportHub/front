@@ -30,7 +30,7 @@ export const mainListItems = (
       <ListItemIcon>
         <SportsSoccerIcon />
       </ListItemIcon>
-      <ListItemText primary="Football" />
+      <ListItemText key="Football" primary="Football" />
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>

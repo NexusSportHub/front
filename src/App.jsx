@@ -19,6 +19,7 @@ function App() {
       email: decodedJwt.email,
       picture: decodedJwt.picture,
     });
+    sessionStorage.setItem('userId', decodedJwt.sub);
     sessionStorage.setItem('userName', decodedJwt.name);
     sessionStorage.setItem('userMail', decodedJwt.email);
     sessionStorage.setItem('userPicture', decodedJwt.picture);
