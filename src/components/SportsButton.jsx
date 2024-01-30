@@ -18,10 +18,11 @@ const SportsButton = () => {
         headers: {
           'x-apisports-key': apiKey,
           'x-rapidapi-host': apiHost,
-          'Authorization': 'Bearer ' + apiBearerToken,
+          'Authorization': apiBearerToken ? 'Bearer ' + apiBearerToken : '',
         },
       });
       setData(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
