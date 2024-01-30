@@ -1,7 +1,8 @@
 import * as React from 'react';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import Title from './Title';
+import Alert from '@mui/material/Alert';
+
 
 function preventDefault(event) {
   event.preventDefault();
@@ -11,7 +12,9 @@ export default function Deposits() {
   let today = Date().toLocaleString();
   return (
     <React.Fragment>
-      <Title>Unpaid Bill</Title>
+      <Alert severity="warning" sx={{ margin: 0.5}}>
+        Unpaid Bills
+      </Alert>
       <Typography component="p" variant="h4">
         120,45 €
       </Typography>
