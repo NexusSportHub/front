@@ -47,65 +47,64 @@ function App() {
   return (
     <>
 
-
-      <ThemeProvider theme={defaultTheme} >
-        <Grid container component="main" sx={{ height: '100vh', width: '100vw' }}>
-          <CssBaseline />
-          <Grid item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
-            <Box
-              sx={{
-                my: 8,
-                mx: 4,
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}
-            >
-              <GoogleLogin
-                clientId={import.meta.env.VITE_CLIENT_ID}
-                onSuccess={handleLoginSuccess}
-                onError={() => {
-                  console.log('Login Failed');
+      <ThemeProvider theme={defaultTheme}>
+        {isLoggedIn ? (
+          <>
+            {/* Aquí se renderizan los componentes cuando el usuario está autenticado */}
+            <div>
+              <UserDataTable userData={decodedUserData} />
+              <button onClick={handleLogoutClick}>Logout</button>
+            </div>
+            <Dashboard />
+            <StyledTableCell />
+            <SportsButton />
+            <Metodos />
+            <Periodos />
+            <Suscripcion />
+          </>
+        ) : (
+          <Grid container component="main" sx={{ height: '100vh', width: '100vw' }}>
+            <CssBaseline />
+            <Grid item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
+              <Box
+                sx={{
+                  my: 8,
+                  mx: 4,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
-                useOneTap
-              />
-
-
-            </Box>
+              >
+                <GoogleLogin
+                  clientId={import.meta.env.VITE_CLIENT_ID}
+                  onSuccess={handleLoginSuccess}
+                  onError={() => {
+                    console.log('Login Failed');
+                  }}
+                  useOneTap
+                />
+              </Box>
+            </Grid>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              md={7}
+              sx={{
+                backgroundImage: `url(${miImagen})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundColor: (t) =>
+                  t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
+                backgroundSize: 'fill',
+                backgroundPosition: 'center',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            />
           </Grid>
-          <Grid
-            item
-            xs={12} // Ajusta el tamaño de la primera columna para que ocupe todo el ancho
-            sm={12} // Ajusta el tamaño de la primera columna para que ocupe todo el ancho
-            md={7}
-            sx={{
-              backgroundImage: `url(${miImagen})`,
-              // object_fit: cover,
-              backgroundRepeat: 'no-repeat',
-              backgroundColor: (t) =>
-                t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
-              backgroundSize: 'fill',
-              backgroundPosition: 'center',
-              display: 'flex', // Añade esta línea
-              alignItems: 'center', // Añade esta línea
-            }}
-          />
-        </Grid>
-        {decodedUserData ? (
-          <div>
-            <UserDataTable userData={decodedUserData} />
-            <button onClick={handleLogoutClick}>Logout</button>
-          </div>
-        ) : null}
-        {isLoggedIn && <Dashboard />}
-        {isLoggedIn && <StyledTableCell />}
-        {isLoggedIn && <SportsButton />}
-        {isLoggedIn && <Metodos />}
-        {isLoggedIn && <Periodos />}
-        {isLoggedIn && <Suscripcion />}
+        )}
       </ThemeProvider>
-
 
       {/* {decodedUserData ? (
         <div>
