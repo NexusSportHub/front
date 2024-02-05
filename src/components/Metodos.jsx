@@ -1,11 +1,17 @@
 
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button'
+
 import axios from 'axios';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 export default function Metodos() {
-    const [products, setProducts] = useState([])
+    const [metodos, setProducts] = useState([])
     useEffect(() => {
         fetchProducts()
     }, [])
@@ -17,26 +23,23 @@ export default function Metodos() {
     }
     return (
         <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>X_METODOPAGO</th>
-                        <th>D_METODOPAGO</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        products.length > 0 && (
-                            products.map((row, key) => (
-                                <tr key={key}>
-                                    <td>{row.X_METODOPAGO}</td>
-                                    <td>{row.D_METODOPAGO}</td>
-                                </tr>
-                            ))
-                        )
-                    }
-                </tbody>
-            </table>
+            <div style={{ display: 'flex', flexDirection: 'row', gap: '2px' }}>
+                {metodos.map((metodo, index) => (
+                    <Card key={index} style={{ width: '300px', marginBottom: '20px' }}>
+                        <CardContent>
+                            <Typography variant="h6" color="text.primary" gutterBottom>
+                                {metodo.X_METODOPAGO}
+                            </Typography>
+                            <Typography variant="subtitle1" color="text.secondary">
+                                {metodo.D_METODOPAGO}
+                            </Typography>
+                        </CardContent>
+                        <Button variant="contained" size="large" color="primary">
+                            Elegir
+                        </Button>
+                    </Card>
+                ))}
+            </div>
         </div>
     );
 }
