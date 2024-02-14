@@ -26,6 +26,11 @@ function App() {
     }
   }, []);
 
+  const clearSessionStorage = () => {
+    sessionStorage.clear();
+  };
+
+
   const handleLoginSuccess = (credentialResponse) => {
     sessionStorage.setItem('undecodedJWT', JSON.stringify(credentialResponse.credential));
     const decodedJwt = jwtDecode(credentialResponse.credential);
@@ -48,7 +53,7 @@ function App() {
     googleLogout();
     setDecodedUserData(null);
     setIsLoggedIn(false);
-    sessionStorage.clear();
+    clearSessionStorage;
   };
 
   return (
