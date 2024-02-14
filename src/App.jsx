@@ -1,5 +1,5 @@
 // App.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 import SportsButton from './components/SportsButton';
@@ -9,39 +9,50 @@ function App() {
   const [decodedUserData, setDecodedUserData] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  // Verificar la sesión del usuario al cargar la página
+  useEffect(() => {
+    const accessToken = sessionStorage.getItem('undecodedJWT');
+
+    if (accessToken) {
+      const decodedJwt = jwtDecode(accessToken);
+      setDecodedUserData({
+        sub: decodedJwt.sub,
+        name: decodedJwt.name,
+        email: decodedJwt.email,
+        picture: decodedJwt.picture,
+      });
+
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   const handleLoginSuccess = (credentialResponse) => {
     sessionStorage.setItem('undecodedJWT', JSON.stringify(credentialResponse.credential));
     const decodedJwt = jwtDecode(credentialResponse.credential);
-    console.log(decodedJwt);
     setDecodedUserData({
       sub: decodedJwt.sub,
       name: decodedJwt.name,
       email: decodedJwt.email,
       picture: decodedJwt.picture,
     });
+
     sessionStorage.setItem('userId', decodedJwt.sub);
     sessionStorage.setItem('userName', decodedJwt.name);
     sessionStorage.setItem('userMail', decodedJwt.email);
     sessionStorage.setItem('userPicture', decodedJwt.picture);
-    
-    // Update the state to indicate that the user has logged in
+
     setIsLoggedIn(true);
   };
 
   const handleLogoutClick = () => {
-    // Call the Google logout function
     googleLogout();
-    // Clear user data after logout
     setDecodedUserData(null);
-    // Update the state to indicate that the user has logged out
     setIsLoggedIn(false);
-    // SessionStorage clear
     sessionStorage.clear();
   };
 
   return (
     <>
-
       <GoogleLogin
         clientId={import.meta.env.VITE_CLIENT_ID}
         onSuccess={handleLoginSuccess}
@@ -58,7 +69,7 @@ function App() {
       ) : null}
 
       {isLoggedIn && <Dashboard />}
-      {isLoggedIn && <SportsButton /> }
+      {isLoggedIn && <SportsButton />}
     </>
   );
 }
