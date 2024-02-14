@@ -11,10 +11,11 @@ const SportsButton = () => {
   const [data, setData] = useState(null);
 
   const handleClick = async (sport) => {
-    let apiUrl =`http://localhost:${webclientPort}/api/${sport}/leagues`;
+    let apiUrl =`http://localhost:${webclientPort}/api/${sport}/seasons`;
     
     try {
       const response = await axios.get(apiUrl, {
+        method: "GET",
         headers: {
           'x-apisports-key': apiKey,
           'x-rapidapi-host': apiHost,
@@ -22,7 +23,6 @@ const SportsButton = () => {
         },
       });
       setData(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
