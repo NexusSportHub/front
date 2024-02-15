@@ -3,12 +3,14 @@
 This is a simple React application that allows users to log in with Google OAuth and view sports data from a designated API. It includes components for authentication, user sessions, and fetching sports data based on user interactions.
 
 ## Table of Contents
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+- [Sports Dashboard Application](#sports-dashboard-application)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Features
 - **Google OAuth Login:** Users can log in with their Google accounts using OAuth.
@@ -39,7 +41,7 @@ Before you begin, ensure you have met the following requirements:
      - `VITE_WEBCLIENT_PORT`: Port number of your web client.
      - `VITE_CLIENT_ID`: Your Google OAuth client ID.
 2. Start the development server:
-   <pre>npm start</pre>
+   <pre>npm run dev</pre>
 3. Open your browser and navigate to `http://localhost:5173` .
 
 ## Contributing

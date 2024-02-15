@@ -4,10 +4,15 @@ import { GoogleLogin, googleLogout } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
 import SportsButton from './components/SportsButton';
 import Dashboard from './components/Dashboard';
+import Metodos from './components/Metodos';
+import Periodos from './components/Periodos';
+import Suscripcion from './components/Suscribcion';
+
 
 function App() {
   const [decodedUserData, setDecodedUserData] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userId, setUserId] = useState(null);
 
   // Verificar la sesión del usuario al cargar la página
   useEffect(() => {
@@ -23,13 +28,14 @@ function App() {
       });
 
       setIsLoggedIn(true);
+      setUserId(decodedJwt.sub);
     }
   }, []);
 
   const clearSessionStorage = () => {
     sessionStorage.clear();
+    console.log(userId);
   };
-
 
   const handleLoginSuccess = (credentialResponse) => {
     sessionStorage.setItem('undecodedJWT', JSON.stringify(credentialResponse.credential));
@@ -47,13 +53,16 @@ function App() {
     sessionStorage.setItem('userPicture', decodedJwt.picture);
 
     setIsLoggedIn(true);
+    setUserId(decodedJwt.sub);
   };
 
   const handleLogoutClick = () => {
     googleLogout();
     setDecodedUserData(null);
     setIsLoggedIn(false);
-    clearSessionStorage;
+    setUserId(null);
+    clearSessionStorage();
+    console.clear();
   };
 
   return (
@@ -75,6 +84,9 @@ function App() {
 
       {isLoggedIn && <Dashboard />}
       {isLoggedIn && <SportsButton />}
+      {isLoggedIn && <Metodos />}
+      {isLoggedIn && <Periodos />}
+      {isLoggedIn && <Suscripcion />}
     </>
   );
 }
